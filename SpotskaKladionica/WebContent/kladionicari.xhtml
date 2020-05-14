@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+   <h:body>
+      <h2>Sportska kladionica</h2>
+      <hr />
+         <h3>Kladionicari</h3>
+      
+      <h:form>
+         <h4>Dodavanje</h4>
+      <h:outputLabel value="Ime:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.ime}"></h:inputText>
+      </div>
+       <div>
+      <h:outputLabel value="Prezime:"/>
+      </div>
+      <div>
+      <h:inputText value="#{kladionicarController.prezime}"></h:inputText>
+      </div>
+      <div>
+      <h:outputLabel value="Adresa:"/>
+      </div>
+      <div>
+      <h:inputText value="#{kladionicarController.adresa}"></h:inputText>
+      </div>
+      
+      <div>
+      <h:outputLabel value="Racun:"/>
+      </div>
+      <div>
+      <h:inputText value="#{kladionicarController.racun}"></h:inputText>
+      </div>
+      
+       <div>
+      <h:outputLabel value="Starost:"/>
+      </div>
+      <div>
+      <h:inputText value="#{kladionicarController.starost}"></h:inputText>
+      </div>
+      
+       
+      
+      
+       
+      <h:commandButton value="DodajKladionicara" action="#{kladionicarController.dodajKladionicar(kladionicarController.ime,kladionicarController.prezime, kladionicarController.racun, kladionicarController.starost, kladionicarController.adresa)}"></h:commandButton>
+                
+      </h:form>
+
+               <h:form>
+         <h4>Brisanje kladionicara iz baze</h4>
+      <h:outputLabel value="Id za brisanje:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.brisanjeid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="ObrisiKladionicara" action="#{kladionicarController.brisiKladionicar(kladionicarController.brisanjeid)}"></h:commandButton>
+                
+      </h:form>
+       <h:form>
+         <h4>Dodavanje pogodjenog tiketa</h4>
+      <h:outputLabel value="Id za dodavanje tiketa:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.pogodjenaid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="PogodjeniTiketi" action="#{kladionicarController.dodajPogodjenuUtakmicu(kladionicarController.pogodjenaid)}"></h:commandButton>
+                
+      </h:form>
+       <h:form>
+         <h4>Dodavanje promasenih tiketa</h4>
+      <h:outputLabel value="Id za dodavanje:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.promasenaid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="PromaseniTiketi" action="#{kladionicarController.dodajPromaseniUtakmicu(kladionicarController.promasenaid)}"></h:commandButton>
+                
+      </h:form>
+      
+         <h:form>
+         <h4>Uplata novca na racun kladionicara</h4>
+      <h:outputLabel value="Id za uplatu:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.uplatinovacid}"></h:inputText>
+      </div>
+        <h:outputLabel value="Novac za uplatu:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.uplatinovac}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="UplataNovca" action="#{kladionicarController.uplatiNovacNaRacun(kladionicarController.uplatinovacid,kladionicarController.uplatinovac)}"></h:commandButton>
+                
+      </h:form>
+      
+       <h:form>
+         <h4>Skidanje novca sa racuna kladionicara</h4>
+      <h:outputLabel value="Id za skidanje novca:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.skininovacid}"></h:inputText>
+      </div>
+        <h:outputLabel value="Novac koji ce da se skine:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.skininovac}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="SkidanjeNovca" action="#{kladionicarController.skiniNovacSaRacuna(kladionicarController.skininovacid,kladionicarController.skininovac)}"></h:commandButton>
+                
+      </h:form>
+      <h:form>
+       <h:outputLabel value="Bonus za kladionicara:"/>
+         <div>
+      <h:inputText value="#{kladionicarController.ckid}"></h:inputText>
+      </div>
+      <h:commandButton value="PribavBonus" action="#{kladionicarController.sendGET(kladionicarController.ckid)}"></h:commandButton>
+
+</h:form>
+         
+     <h:form>
+     <h4 style="background-color: red;">Azuriranje podataka kladionicara</h4>
+      <h:outputLabel value="Id za azuriranje:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.azurirajid}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Nova ime:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.azurirajime}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Nova prezime:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.azurirajprezime}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Novo godiste:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.azurirajstarost}"></h:inputText>
+      </div>  
+      
+      <h:outputLabel value="Nova adresa:"/>
+      <div>
+      <h:inputText value="#{kladionicarController.azurirajadresa}"></h:inputText>
+      </div>  
+      
+      
+      <h:commandButton value="AzurirajKladionicara" action="#{kladionicarController.azurirajKladionicar(kladionicarController.azurirajid, kladionicarController.azurirajadresa, kladionicarController.azurirajime, kladionicarController.azurirajprezime, kladionicarController.azurirajstarost)}"></h:commandButton>
+
+
+      
+      <h:dataTable value="#{kladionicarController.sviKladionicari()}" var="k"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    			style="color:blue;font-size:23px;font-weight:bold; margin-top:30px;text-shadow: 1px 1px 2px red, 0 0 15px yellow, 0 0 5px #fff; border:3px solid #a5e840; background-color:rgba(0, 0, 0,0.5);text-align:center; border-spacing: 5px; width:80%; margin-left:10%;">
+    	
+    		<h:column >
+    			<f:facet  name="header">
+    				Identifikator
+    			</f:facet>
+    			<h:outputText value="#{k.id}"/>
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Adresa
+				</f:facet>
+    			<h:outputText value="#{k.adresa}"/>
+    		</h:column>
+
+    		<h:column>
+    			<f:facet name="header">
+    				Racun
+				</f:facet>
+    			<h:outputText value="#{k.racun}"/>
+    		</h:column>
+    		
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				Ime 
+				</f:facet>
+    			<h:outputText value="#{k.ime}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Prezime 
+				</f:facet>
+    			<h:outputText value="#{k.prezime}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Broj godina
+				</f:facet>
+    			<h:outputText value="#{k.starost}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Pogodjeni tiketi
+				</f:facet>
+    			<h:outputText value="#{k.pogodjeni}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Promaseni tiketi
+				</f:facet>
+    			<h:outputText value="#{k.promaseni}"/>
+    		</h:column>
+    	
+    	</h:dataTable>
+                
+      </h:form>     
+         
+         
+   </h:body>
+</html>

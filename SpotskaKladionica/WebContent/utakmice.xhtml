@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+   <h:body>
+      <h2>Sportska kladionica</h2>
+      <hr />
+         <h3>Utakmice</h3>
+      
+      <h:form>
+         <h4>Dodavanje</h4>
+      <h:outputLabel value="Ekipa 1:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.ekipa1}"></h:inputText>
+      </div>
+       <div>
+      <h:outputLabel value="Ekipa 2:"/>
+      </div>
+      <div>
+      <h:inputText value="#{utakmicaController.ekipa2}"></h:inputText>
+      </div>
+      <div>
+      <h:outputLabel value="Ishod:"/>
+      </div>
+      <div>
+      <h:inputText value="#{utakmicaController.ishod}"></h:inputText>
+      </div>
+      
+      <div>
+      <h:outputLabel value="Mesto odrzavanja:"/>
+      </div>
+      <div>
+      <h:inputText value="#{utakmicaController.mestoodrzavanja}"></h:inputText>
+      </div>
+      
+     
+      
+       
+      
+      
+       
+      <h:commandButton value="DodajUtakmicu" action="#{utakmicaController.dodajUtakmicu(utakmicaController.ekipa1,utakmicaController.ekipa2,utakmicaController.ishod,utakmicaController.mestoodrzavanja)}"></h:commandButton>
+                
+      </h:form>
+
+               <h:form>
+         <h4>Brisanje utakmice iz baze</h4>
+      <h:outputLabel value="Id za brisanje:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.bid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="ObrisiUtakmicu" action="#{utakmicaController.izbrisiUtakmicu(utakmicaController.bid)}"></h:commandButton>
+                
+      </h:form>
+      
+      
+        
+      
+       
+         
+         
+     <h:form>
+     <h4 style="background-color: yellow;">Azuriranje podataka o utakmici</h4>
+      <h:outputLabel value="Id za azuriranje:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.aid}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Nova ime ekipe 1:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.aekipa1}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Nova ime ekipe 2:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.aekipa2}"></h:inputText>
+      </div>  
+      <h:outputLabel value="Novo ishod(ako je potrabno):"/>
+      <div>
+      <h:inputText value="#{utakmicaController.ashod}"></h:inputText>
+      </div>  
+      
+      <h:outputLabel value="Nova mesto odrzavanja:"/>
+      <div>
+      <h:inputText value="#{utakmicaController.aestoodrzavanja}"></h:inputText>
+      </div>  
+      
+      
+      <h:commandButton value="AzurirajUtakmicu" action="#{utakmicaController.azurirajUtakmicu(utakmicaController.aid,utakmicaController.aekipa1,utakmicaController.aekipa2,utakmicaController.ashod,utakmicaController.aestoodrzavanja)}"></h:commandButton>
+
+
+      
+      <h:dataTable value="#{utakmicaController.spisakUtakmica()}" var="k"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    			style="color:blue;font-size:23px;font-weight:bold; margin-top:30px;text-shadow: 1px 1px 2px red, 0 0 15px yellow, 0 0 5px #fff; border:3px solid #a5e840; background-color:rgba(0, 0, 0,0.5);text-align:center; border-spacing: 5px; width:80%; margin-left:10%;">
+    	
+    		<h:column >
+    			<f:facet  name="header">
+    				Identifikator
+    			</f:facet>
+    			<h:outputText value="#{k.id}"/>
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Ekipa 1
+				</f:facet>
+    			<h:outputText value="#{k.ekipa1}"/>
+    		</h:column>
+
+    		<h:column>
+    			<f:facet name="header">
+    				Ekipa 2
+				</f:facet>
+    			<h:outputText value="#{k.ekipa2}"/>
+    		</h:column>
+    		
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				Ishod
+				</f:facet>
+    			<h:outputText value="#{k.ishod}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Mesto odrzavanja
+				</f:facet>
+    			<h:outputText value="#{k.mestoodrzavanja}"/>
+    		</h:column>
+    			
+    			
+    	
+    	</h:dataTable>
+                
+      </h:form>     
+         
+         
+   </h:body>
+</html>

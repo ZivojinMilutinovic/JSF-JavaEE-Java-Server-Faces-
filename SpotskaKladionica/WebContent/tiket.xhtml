@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://java.sun.com/jsf/core">
+
+
+   <h:body>
+      <h2>Sportska kladionica</h2>
+      <hr />
+         <h3>Tiketi</h3>
+      
+      <h:form>
+         <h4>Dodavanje</h4>
+      <h:outputLabel value="Pisete utakmice koje kladionicar poseduje odvajajuci ih zarezom(1,2,3)"/>
+      <div>
+      <h:inputText value="#{tiketController.utakmicaid}"></h:inputText>
+      </div>
+       <div>
+      <h:outputLabel value="Id kladionicara"/>
+      </div>
+      <div>
+      <h:inputText value="#{tiketController.kladionicarid}"></h:inputText>
+      </div>
+      <div>
+      <h:outputLabel value="Ishod tiketa:"/>
+      </div>
+      <div>
+      <h:inputText value="#{tiketController.ishod}"></h:inputText>
+      </div>
+      
+      <div>
+      <h:outputLabel value="Kvota:"/>
+      </div>
+      <div>
+      <h:inputText value="#{tiketController.kvota}"></h:inputText>
+      </div>
+       <div>
+      <h:outputLabel value="Kolina novaca za isplatu:"/>
+      </div>
+      <div>
+      <h:inputText value="#{tiketController.vrednost}"></h:inputText>
+      </div>
+      
+     
+      
+       
+      
+      
+       
+      <h:commandButton value="DodajTiket" action="#{tiketController.dodajTiket(tiketController.utakmicaid,tiketController.kladionicarid,tiketController.kvota,tiketController.ishod,tiketController.vrednost)}"></h:commandButton>
+                
+      </h:form>
+
+               <h:form>
+         <h4>Dodavanje utakmice u tiket</h4>
+      <h:outputLabel value="Id tiketa:"/>
+      <div>
+      <h:inputText value="#{tiketController.dodajid}"></h:inputText>
+      </div>
+       <h:outputLabel value="Id utakmice:"/>
+      <div>
+      <h:inputText value="#{tiketController.dodajuid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="DodajUtakmicu" action="#{tiketController.dodajUtakmicu(tiketController.dodajid,tiketController.dodajuid)}"></h:commandButton>
+                
+      </h:form>
+      <h:form>
+         <h4>Brisanje utakmice iz tiketa</h4>
+      <h:outputLabel value="Id tiketa:"/>
+      <div>
+      <h:inputText value="#{tiketController.izbrisiid}"></h:inputText>
+      </div>
+       <h:outputLabel value="Id utakmice:"/>
+      <div>
+      <h:inputText value="#{tiketController.izbrisiuid}"></h:inputText>
+      </div>
+     
+       
+ <h:commandButton value="Izbrisi Utakmicu" action="#{tiketController.izbrisiUtakmicu(tiketController.izbrisiid,tiketController.izbrisiuid)}"></h:commandButton>
+                
+      </h:form>
+      
+      
+        
+      
+       
+         
+         
+      <h:form>
+       <h:outputLabel value="Id tiketa za prikaz utakmica:"/>
+      <div>
+      <h:inputText value="#{tiketController.sveutakmiceid}">
+      
+      </h:inputText>
+      
+      </div>
+     <h:commandButton value="Napred" update="table" action="#{tiketController.spisakUtakmicaZaTiket(tiketController.sveutakmiceid)}"></h:commandButton>
+       
+
+      
+      <h:dataTable id="table" value="#{tiketController.spisakUtakmicaZaTiket(tiketController.sveutakmiceid)}" var="k"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    			style="color:blue;font-size:23px;font-weight:bold; margin-top:30px;text-shadow: 1px 1px 2px red, 0 0 15px yellow, 0 0 5px #fff; border:3px solid #a5e840; background-color:rgba(0, 0, 0,0.5);text-align:center; border-spacing: 5px; width:80%; margin-left:10%;">
+    	
+    		<h:column >
+    			<f:facet  name="header">
+    				Identifikator
+    			</f:facet>
+    			<h:outputText value="#{k.id}"/>
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Ekipa 1
+				</f:facet>
+    			<h:outputText value="#{k.ekipa1}"/>
+    		</h:column>
+
+    		<h:column>
+    			<f:facet name="header">
+    				Ekipa 2
+				</f:facet>
+    			<h:outputText value="#{k.ekipa2}"/>
+    		</h:column>
+    		
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				Ishod
+				</f:facet>
+    			<h:outputText value="#{k.ishod}"/>
+    		</h:column>
+    			<h:column>
+    			<f:facet name="header">
+    				Mesto odrzavanja
+				</f:facet>
+    			<h:outputText value="#{k.mestoodrzavanja}"/>
+    		</h:column>
+    			
+    			
+    	
+    	</h:dataTable>
+                
+           </h:form>
+         
+         
+   </h:body>
+</html>
